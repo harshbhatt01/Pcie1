@@ -1,0 +1,27 @@
+{
+  "name": "pcie1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harshbhatt01/Pcie1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/harshbhatt01/Pcie1/issues"
+  },
+  "homepage": "https://github.com/harshbhatt01/Pcie1#readme",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "express": "^4.17.2",
+    "mongoose": "^6.1.10",
+    "nodemon": "^2.0.15"
+  }
+}
