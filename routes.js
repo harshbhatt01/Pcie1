@@ -5,26 +5,39 @@ const AddressI = require('./models/address');
 const PersonI = require('./models/person');
 const req = require('express/lib/request');
 
-// Person
+// Person routes
 
-router.get('/person', async (request, response) => {  // fetch
+//getting all the person's data
+router.get('/person', async (request, response) => {  
     const data = await PersonI.find();
     response.send(data);
 });
 
-router.post('/person', async (request, response) => {    // insert
+//getting data by is
+router.get('/person/:id', async (request, response) => {  
+    const _id = request.params.id;
+    const data = await PersonI.findById(_id);
+    response.send(data);
+});
+
+// inserting the data
+router.post('/person', async (request, response) => {    
     const person = new PersonI(request.body)
     await person.save();
     response.send(person);
 })
 
-router.patch('/person/:id', async (request, response) => {    // update
+
+//updating the data
+router.patch('/person/:id', async (request, response) => {   
     const _id = request.params.id;
     const person = await PersonI.findByIdAndUpdate(_id, request.body, {new: true});
     response.send(person);
 })
 
-router.delete('/person/:id', async (request, response) => {   // delete
+
+//deleting the data
+router.delete('/person/:id', async (request, response) => {   
     try{
         const _id = request.params.id;
         const person = await PersonI.findByIdAndDelete(_id);
@@ -35,24 +48,38 @@ router.delete('/person/:id', async (request, response) => {   // delete
 })
 // --------
 
-// Address
-router.get('/address', async (request, response) => {  // fetch
+// Address routes
+
+//fetching all address data
+router.get('/address', async (request, response) => {  
     const data = await AddressI.find();
     response.send(data);
 });
 
-router.post('/address', async (request, response) => {    // insert
+
+// fetching the data by id
+router.get('/address/:id', async (request, response) => {  
+    const _id = request.params.id;
+    const data = await AddressI.findById(_id);
+    response.send(data);
+});
+
+
+//inserting the data
+router.post('/address', async (request, response) => {   
     const address = new AddressI(request.body)
     address.save();
     response.send(address);
 })
 
-router.patch('/address/:id', async (request, response) => {    // update
+// updating the data
+router.patch('/address/:id', async (request, response) => {    
     const _id = request.params.id;
     const address = await AddressI.findByIdAndUpdate(_id, request.body, {new: true});
     response.send(address);
 })
 
+//deleting the data
 router.delete('/address/:id', async (request, response) => {
     const _id = request.params.id;
     const address = await AddressI.findByIdAndDelete(_id);
